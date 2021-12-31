@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AdvancedTextView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_radius" format="dimension" />
+        <attr name="border_radius_top_left" format="dimension" />
+        <attr name="border_radius_top_right" format="dimension" />
+        <attr name="border_radius_bottom_left" format="dimension" />
+        <attr name="border_radius_bottom_right" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="gradient_startColor" format="color" />
+        <attr name="gradient_endColor" format="color" />
+        <attr name="disable_color" format="color" />
+        <attr name="disable_border_width" format="dimension" />
+        <attr name="disable_border_radius" format="dimension" />
+        <attr name="disable_border_radius_top_left" format="dimension" />
+        <attr name="disable_border_radius_top_right" format="dimension" />
+        <attr name="disable_border_radius_bottom_left" format="dimension" />
+        <attr name="disable_border_radius_bottom_right" format="dimension" />
+        <attr name="disable_border_color" format="color" />
+        <attr name="disable_gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="disable_gradient_startColor" format="color" />
+        <attr name="disable_gradient_endColor" format="color" />
+        <attr name="selected_color" format="color" />
+        <attr name="selected_border_width" format="dimension" />
+        <attr name="selected_border_radius" format="dimension" />
+        <attr name="selected_border_radius_top_left" format="dimension" />
+        <attr name="selected_border_radius_top_right" format="dimension" />
+        <attr name="selected_border_radius_bottom_left" format="dimension" />
+        <attr name="selected_border_radius_bottom_right" format="dimension" />
+        <attr name="selected_border_color" format="color" />
+        <attr name="selected_gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="selected_gradient_startColor" format="color" />
+        <attr name="selected_gradient_endColor" format="color" />
+        <attr name="shadow_xoffset" format="dimension" />
+        <attr name="shadow_yoffset" format="dimension" />
+        <attr name="shadow_blur" format="dimension" />
+        <attr name="shadow_spread" format="dimension" />
+        <attr name="shadow_color" format="color" />
+        <attr name="shadow_radius" format="dimension" />
+        <attr name="at_font_weight" format="integer" />
+        <attr name="at_bold_type" format="enum">
+            <enum name="semibold" value="400" />
+            <enum name="medium" value="700" />
+        </attr>
+        <attr name="at_shadow_layer_radius" format="float" />
+        <attr name="at_shadow_layer_dx" format="float" />
+        <attr name="at_shadow_layer_dy" format="float" />
+        <attr name="at_shadow_layer_color" format="color" />
+    </declare-styleable>
+</resources>
