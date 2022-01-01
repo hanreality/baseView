@@ -9,7 +9,7 @@ dependencies {
 
 ```
 
-![](/pic/1.jpg)
+<img src="pic/效果图.jpg" width = "360" height = "914" alt="" />
 
 ### 属性解析
 
