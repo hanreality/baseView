@@ -9,7 +9,7 @@ dependencies {
 
 ```
 
-![](/pic/1.jpg)
+![效果图](/pic/1.jpg)
 
 ### 属性解析
 
