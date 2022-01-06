@@ -27,9 +27,8 @@ import kotlin.math.abs
 class AdvancedLinearLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = -1
+    defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
-    private var mUserPadding = IntArray(4) // 用户设置的padding
     private var mShadowEnable = false
     init {
         initStyle(context, attrs)
@@ -52,10 +51,6 @@ class AdvancedLinearLayout @JvmOverloads constructor(
             ta.recycle()
         }
         val a = context.obtainStyledAttributes(attrs, R.styleable.AdvancedViewGroup)
-        mUserPadding[0] = paddingLeft
-        mUserPadding[1] = paddingTop
-        mUserPadding[2] = paddingRight
-        mUserPadding[3] = paddingBottom
         val normal: Drawable? = generateDrawable(a)
         val disable: Drawable? = generateDisableDrawable(a)
         val selected: Drawable? = generateSelectedDrawable(a)
