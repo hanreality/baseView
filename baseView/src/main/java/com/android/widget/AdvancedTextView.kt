@@ -13,7 +13,7 @@ import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatTextView
+import android.widget.TextView
 import java.lang.Exception
 import kotlin.math.abs
 
@@ -29,8 +29,8 @@ import kotlin.math.abs
 class AdvancedTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.style.TextAppearance_AppCompat
-) : AppCompatTextView(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = 0
+) : TextView(context, attrs, defStyleAttr) {
     private var mUserPadding = IntArray(4) // 用户设置的padding
     private var mShadowEnable = false
 
