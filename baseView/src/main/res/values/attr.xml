@@ -67,6 +67,9 @@
     <attr name="shadow_radius" format="dimension" />
 
     <declare-styleable name="AdvancedTextView">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:singleLine"/>
         <attr name="border_width" />
         <attr name="border_radius" />
         <attr name="border_radius_top_left" />
@@ -120,6 +123,8 @@
     </declare-styleable>
 
     <declare-styleable name="AdvancedViewGroup">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
         <attr name="border_width" />
         <attr name="border_radius" />
         <attr name="border_radius_top_left" />

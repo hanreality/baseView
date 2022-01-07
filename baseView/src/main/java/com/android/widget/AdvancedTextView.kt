@@ -40,22 +40,9 @@ class AdvancedTextView @JvmOverloads constructor(
 
     @SuppressLint("ResourceType", "CustomViewStyleable")
     fun initStyle(context: Context, attrs: AttributeSet?) {
-        val attrArray = intArrayOf(
-            android.R.attr.layout_width,
-            android.R.attr.layout_height
-        )
-        val ta = context.obtainStyledAttributes(attrs, attrArray)
-        var layoutWidth = 0
-        var layoutHeight = 0
-        try {
-            layoutWidth = ta.getDimensionPixelSize(0, ViewGroup.LayoutParams.WRAP_CONTENT)
-            layoutHeight = ta.getDimensionPixelSize(1, ViewGroup.LayoutParams.WRAP_CONTENT)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            ta.recycle()
-        }
         val a = context.obtainStyledAttributes(attrs, R.styleable.AdvancedTextView)
+        val layoutWidth = a.getDimensionPixelSize(R.styleable.AdvancedTextView_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val layoutHeight = a.getDimensionPixelSize(R.styleable.AdvancedTextView_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT)
         mUserPadding[0] = paddingLeft
         mUserPadding[1] = paddingTop
         mUserPadding[2] = paddingRight
