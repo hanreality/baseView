@@ -35,8 +35,20 @@ class AdvancedFrameLayout @JvmOverloads constructor(
     @SuppressLint("ResourceType", "CustomViewStyleable")
     fun initStyle(context: Context, attrs: AttributeSet?) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.AdvancedViewGroup)
-        val layoutWidth = a.getDimensionPixelSize(R.styleable.AdvancedTextView_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT)
-        val layoutHeight = a.getDimensionPixelSize(R.styleable.AdvancedTextView_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT)
+        var layoutHeight = 0
+        var layoutWidth = 0
+        try {
+            layoutWidth = a.getDimensionPixelSize(
+                R.styleable.AdvancedTextView_android_layout_width,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            layoutHeight =
+                a.getDimensionPixelSize(
+                    R.styleable.AdvancedTextView_android_layout_height,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+        } catch (e: Exception) {
+        }
         val normal: Drawable? = generateDrawable(a)
         val disable: Drawable? = generateDisableDrawable(a)
         val selected: Drawable? = generateSelectedDrawable(a)

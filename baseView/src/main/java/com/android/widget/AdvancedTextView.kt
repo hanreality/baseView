@@ -41,8 +41,20 @@ class AdvancedTextView @JvmOverloads constructor(
     @SuppressLint("ResourceType", "CustomViewStyleable")
     fun initStyle(context: Context, attrs: AttributeSet?) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.AdvancedTextView)
-        val layoutWidth = a.getDimensionPixelSize(R.styleable.AdvancedTextView_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT)
-        val layoutHeight = a.getDimensionPixelSize(R.styleable.AdvancedTextView_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT)
+        var layoutHeight = 0
+        var layoutWidth = 0
+        try {
+            layoutWidth = a.getDimensionPixelSize(
+                R.styleable.AdvancedTextView_android_layout_width,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            layoutHeight =
+                a.getDimensionPixelSize(
+                    R.styleable.AdvancedTextView_android_layout_height,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+        } catch (e: Exception) {
+        }
         mUserPadding[0] = paddingLeft
         mUserPadding[1] = paddingTop
         mUserPadding[2] = paddingRight
@@ -223,7 +235,7 @@ class AdvancedTextView @JvmOverloads constructor(
         states[1] = IntArray(1) { android.R.attr.state_selected }
         states[2] = IntArray(0)
         val colors =
-            intArrayOf(params.mDisableTextColor , params.mSelectedTextColor, textColors.defaultColor)
+            intArrayOf(params.mDisableTextColor, params.mSelectedTextColor, textColors.defaultColor)
         return ColorStateList(states, colors)
     }
 
