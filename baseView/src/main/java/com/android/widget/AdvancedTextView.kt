@@ -43,6 +43,7 @@ class AdvancedTextView @JvmOverloads constructor(
         val a = context.obtainStyledAttributes(attrs, R.styleable.AdvancedTextView)
         var layoutHeight = 0
         var layoutWidth = 0
+        var singleLine = false
         try {
             layoutWidth = a.getDimensionPixelSize(
                 R.styleable.AdvancedTextView_android_layout_width,
@@ -52,6 +53,11 @@ class AdvancedTextView @JvmOverloads constructor(
                 a.getDimensionPixelSize(
                     R.styleable.AdvancedTextView_android_layout_height,
                     ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            singleLine =
+                a.getBoolean(
+                    R.styleable.AdvancedTextView_android_singleLine,
+                    false
                 )
         } catch (e: Exception) {
         }
@@ -100,33 +106,7 @@ class AdvancedTextView @JvmOverloads constructor(
         if (bgDrawable != null) {
             background = bgDrawable
         }
-        resetSingleLine(context, attrs)
-    }
-
-    private fun resetSingleLine(context: Context, attrs: AttributeSet?) {
-        val textAppearanceStyleArr: IntArray
-        var singleLineStyle = 0
-        try {
-            val clazz = Class.forName("com.android.internal.R\$styleable")
-            var field = clazz.getDeclaredField("TextView")
-            field.isAccessible = true
-            textAppearanceStyleArr = field[null] as IntArray
-            field = clazz.getDeclaredField("TextView_singleLine")
-            field.isAccessible = true
-            singleLineStyle = field[null] as Int
-            val a = context.obtainStyledAttributes(
-                attrs,
-                textAppearanceStyleArr
-            )
-            isSingleLine = a.getBoolean(singleLineStyle, false)
-            a.recycle()
-        } catch (e: ClassNotFoundException) {
-            e.printStackTrace()
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
-        } catch (e: NoSuchFieldException) {
-            e.printStackTrace()
-        }
+        isSingleLine = singleLine
     }
 
     private fun setFontWeight(a: TypedArray) {
@@ -227,15 +207,25 @@ class AdvancedTextView @JvmOverloads constructor(
     private fun generateTextColors(a: TypedArray): ColorStateList {
         val params = AdvancedParams()
         params.mDisableTextColor =
-            a.getColor(R.styleable.AdvancedTextView_disable_text_color, textColors.defaultColor)
+            a.getColor(R.styleable.AdvancedTextView_disable_text_color, -1)
         params.mSelectedTextColor =
-            a.getColor(R.styleable.AdvancedTextView_selected_text_color, textColors.defaultColor)
+            a.getColor(R.styleable.AdvancedTextView_selected_text_color, -1)
         val states = Array(3) { IntArray(3) }
         states[0] = IntArray(1) { -android.R.attr.state_enabled }
         states[1] = IntArray(1) { android.R.attr.state_selected }
         states[2] = IntArray(0)
         val colors =
-            intArrayOf(params.mDisableTextColor, params.mSelectedTextColor, textColors.defaultColor)
+            intArrayOf(
+                if (params.mDisableTextColor == -1) textColors.getColorForState(
+                    states[0],
+                    textColors.defaultColor
+                ) else params.mDisableTextColor,
+                if (params.mSelectedTextColor == -1) textColors.getColorForState(
+                    states[1],
+                    textColors.defaultColor
+                ) else params.mSelectedTextColor,
+                textColors.defaultColor
+            )
         return ColorStateList(states, colors)
     }
 
