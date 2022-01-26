@@ -11,5 +11,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<TextView>(R.id.selected_text).isSelected = true
+        findViewById<TextView>(R.id.pressed_text).setOnClickListener {
+            it.isSelected = !it.isSelected
+        }
     }
 }

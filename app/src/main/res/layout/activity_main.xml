@@ -19,6 +19,26 @@
             android:showDividers="middle">
 
             <com.android.widget.AdvancedTextView
+                android:id="@+id/pressed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="触摸或点击变色"
+                android:textColor="@color/eh_room_seat_status_text_color_selector"
+                android:background="#ffffff"
+                app:border_color="#ededed"
+                app:border_radius="20dp"
+                app:border_width="1dp"
+                app:pressed_border_color="#f8f8f8"
+                app:pressed_border_radius="20dp"
+                app:pressed_border_width="1dp"
+                app:pressed_color="#324511"
+                app:pressed_text_color="#0000ff"
+                app:selected_text_color="#ff1A1A"/>
+
+            <com.android.widget.AdvancedTextView
                 android:id="@+id/selected_text"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"

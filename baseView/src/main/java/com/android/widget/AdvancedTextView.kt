@@ -68,6 +68,7 @@ class AdvancedTextView @JvmOverloads constructor(
         val normal: Drawable? = generateDrawable(a)
         val disable: Drawable? = generateDisableDrawable(a)
         val selected: Drawable? = generateSelectedDrawable(a)
+        val pressed: Drawable? = generatePressedDrawable(a)
         val colorStateList: ColorStateList = generateTextColors(a)
         mShadowEnable = addShadowToView(a, layoutWidth, layoutHeight)
         setFontWeight(a)
@@ -78,18 +79,21 @@ class AdvancedTextView @JvmOverloads constructor(
         setTextColor(colorStateList)
 
         var stateDrawable: StateListDrawable? = null
-        if (disable != null || selected != null) {
+        if (disable != null || selected != null || pressed != null) {
             stateDrawable = StateListDrawable()
+            if (pressed != null) {
+                stateDrawable.addState(intArrayOf(android.R.attr.state_pressed, android.R.attr.state_enabled), pressed)
+            }
+            if (selected != null) {
+                stateDrawable.addState(intArrayOf(android.R.attr.state_selected, android.R.attr.state_enabled), selected)
+            }
             if (disable != null) {
                 stateDrawable.addState(intArrayOf(-android.R.attr.state_enabled), disable)
             }
-            if (selected != null) {
-                stateDrawable.addState(intArrayOf(android.R.attr.state_selected), selected)
-            }
         }
         var bgDrawable: Drawable? = null
-        if (normal != null) {
-            bgDrawable = if (stateDrawable != null) {
+        bgDrawable = if (normal != null) {
+             if (stateDrawable != null) {
                 stateDrawable.addState(intArrayOf(), normal)
                 stateDrawable
             } else {
@@ -99,8 +103,9 @@ class AdvancedTextView @JvmOverloads constructor(
             if (stateDrawable != null) {
                 val main = if (background != null) background else ColorDrawable(Color.TRANSPARENT)
                 stateDrawable.addState(intArrayOf(), main)
+                stateDrawable
             } else {
-                bgDrawable = null
+                null
             }
         }
         if (bgDrawable != null) {
@@ -206,24 +211,26 @@ class AdvancedTextView @JvmOverloads constructor(
 
     private fun generateTextColors(a: TypedArray): ColorStateList {
         val params = AdvancedParams()
+        val states = arrayOf(
+            intArrayOf(android.R.attr.state_pressed, android.R.attr.state_enabled),
+            intArrayOf(android.R.attr.state_selected, android.R.attr.state_enabled),
+            intArrayOf(-android.R.attr.state_enabled),
+            intArrayOf()
+        )
         params.mDisableTextColor =
-            a.getColor(R.styleable.AdvancedTextView_disable_text_color, -1)
+            a.getColor(R.styleable.AdvancedTextView_disable_text_color, textColors.getColorForState(states[2],
+                textColors.defaultColor))
         params.mSelectedTextColor =
-            a.getColor(R.styleable.AdvancedTextView_selected_text_color, -1)
-        val states = Array(3) { IntArray(3) }
-        states[0] = IntArray(1) { -android.R.attr.state_enabled }
-        states[1] = IntArray(1) { android.R.attr.state_selected }
-        states[2] = IntArray(0)
+            a.getColor(R.styleable.AdvancedTextView_selected_text_color, textColors.getColorForState(states[1],
+                textColors.defaultColor))
+        params.mPressedTextColor =
+            a.getColor(R.styleable.AdvancedTextView_pressed_text_color, textColors.getColorForState(states[0],
+                textColors.defaultColor))
         val colors =
             intArrayOf(
-                if (params.mDisableTextColor == -1) textColors.getColorForState(
-                    states[0],
-                    textColors.defaultColor
-                ) else params.mDisableTextColor,
-                if (params.mSelectedTextColor == -1) textColors.getColorForState(
-                    states[1],
-                    textColors.defaultColor
-                ) else params.mSelectedTextColor,
+                params.mPressedTextColor,
+                params.mSelectedTextColor,
+                params.mDisableTextColor,
                 textColors.defaultColor
             )
         return ColorStateList(states, colors)
@@ -240,6 +247,23 @@ class AdvancedTextView @JvmOverloads constructor(
         } else {
             if (params.mSelectedColor != 1) {
                 ColorDrawable(params.mSelectedColor)
+            } else {
+                null
+            }
+        }
+    }
+
+    private fun generatePressedDrawable(a: TypedArray): Drawable? {
+        val params = AdvancedParams.newPressedParams(a)
+        val drawable = generateDrawable(params)
+        return if (drawable != null) {
+            if (params.mPressedColor != 1) {
+                drawable.setColor(params.mPressedColor)
+            }
+            drawable
+        } else {
+            if (params.mPressedColor != 1) {
+                ColorDrawable(params.mPressedColor)
             } else {
                 null
             }
@@ -421,6 +445,8 @@ class AdvancedTextView @JvmOverloads constructor(
         var mDisableTextColor = 0
         var mSelectedColor = 0
         var mSelectedTextColor = 0
+        var mPressedColor = 0
+        var mPressedTextColor = 0
         var mShadowEnable = false
         var mShadowXOffset = 0
         var mShadowYOffset = 0
@@ -522,6 +548,40 @@ class AdvancedTextView @JvmOverloads constructor(
                 )
                 params.mBorderRadiusBottomRight = a.getDimensionPixelSize(
                     R.styleable.AdvancedTextView_selected_border_radius_bottom_right,
+                    0
+                )
+                return params
+            }
+
+            fun newPressedParams(a: TypedArray): AdvancedParams {
+                val params = AdvancedParams()
+                params.mBorderWidth =
+                    a.getDimensionPixelSize(R.styleable.AdvancedTextView_pressed_border_width, 0)
+                params.mBorderRadius =
+                    a.getDimensionPixelSize(R.styleable.AdvancedTextView_pressed_border_radius, 0)
+                params.mBorderColor =
+                    a.getColor(R.styleable.AdvancedTextView_pressed_border_color, -0x1)
+                params.mGradientDirection =
+                    a.getInt(R.styleable.AdvancedTextView_pressed_gradient_direction, 0)
+                params.mGradientStartColor =
+                    a.getColor(R.styleable.AdvancedTextView_pressed_gradient_startColor, -0x1)
+                params.mGradientEndColor =
+                    a.getColor(R.styleable.AdvancedTextView_pressed_gradient_endColor, -0x1)
+                params.mPressedColor = a.getColor(R.styleable.AdvancedTextView_pressed_color, 1)
+                params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
+                    R.styleable.AdvancedTextView_pressed_border_radius_top_left,
+                    0
+                )
+                params.mBorderRadiusTopRight = a.getDimensionPixelSize(
+                    R.styleable.AdvancedTextView_pressed_border_radius_top_right,
+                    0
+                )
+                params.mBorderRadiusBottomLeft = a.getDimensionPixelSize(
+                    R.styleable.AdvancedTextView_pressed_border_radius_bottom_left,
+                    0
+                )
+                params.mBorderRadiusBottomRight = a.getDimensionPixelSize(
+                    R.styleable.AdvancedTextView_pressed_border_radius_bottom_right,
                     0
                 )
                 return params

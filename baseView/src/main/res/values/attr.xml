@@ -59,6 +59,26 @@
     </attr>
     <attr name="selected_gradient_startColor" format="color" />
     <attr name="selected_gradient_endColor" format="color" />
+    <attr name="pressed_color" format="color" />
+    <attr name="pressed_border_width" format="dimension" />
+    <attr name="pressed_border_radius" format="dimension" />
+    <attr name="pressed_border_radius_top_left" format="dimension" />
+    <attr name="pressed_border_radius_top_right" format="dimension" />
+    <attr name="pressed_border_radius_bottom_left" format="dimension" />
+    <attr name="pressed_border_radius_bottom_right" format="dimension" />
+    <attr name="pressed_border_color" format="color" />
+    <attr name="pressed_gradient_direction" format="enum">
+        <enum name="toRight" value="1" />
+        <enum name="toLeft" value="2" />
+        <enum name="toBottom" value="3" />
+        <enum name="toTop" value="4" />
+        <enum name="toBottomRight" value="5" />
+        <enum name="toTopLeft" value="6" />
+        <enum name="toBottomLeft" value="7" />
+        <enum name="toTopRight" value="8" />
+    </attr>
+    <attr name="pressed_gradient_startColor" format="color" />
+    <attr name="pressed_gradient_endColor" format="color" />
     <attr name="shadow_xoffset" format="dimension" />
     <attr name="shadow_yoffset" format="dimension" />
     <attr name="shadow_blur" format="dimension" />
@@ -102,6 +122,17 @@
         <attr name="selected_gradient_direction" />
         <attr name="selected_gradient_startColor" />
         <attr name="selected_gradient_endColor" />
+        <attr name="pressed_color" />
+        <attr name="pressed_border_width" />
+        <attr name="pressed_border_radius" />
+        <attr name="pressed_border_radius_top_left" />
+        <attr name="pressed_border_radius_top_right" />
+        <attr name="pressed_border_radius_bottom_left" />
+        <attr name="pressed_border_radius_bottom_right" />
+        <attr name="pressed_border_color" />
+        <attr name="pressed_gradient_direction" />
+        <attr name="pressed_gradient_startColor" />
+        <attr name="pressed_gradient_endColor" />
         <attr name="shadow_xoffset" />
         <attr name="shadow_yoffset" />
         <attr name="shadow_blur" />
@@ -111,6 +142,7 @@
 
         <attr name="disable_text_color" format="color" />
         <attr name="selected_text_color" format="color" />
+        <attr name="pressed_text_color" format="color" />
         <attr name="font_weight" format="integer" />
         <attr name="bold_style" format="enum">
             <enum name="semibold" value="400" />
@@ -157,6 +189,17 @@
         <attr name="selected_gradient_direction" />
         <attr name="selected_gradient_startColor" />
         <attr name="selected_gradient_endColor" />
+        <attr name="pressed_color" />
+        <attr name="pressed_border_width" />
+        <attr name="pressed_border_radius" />
+        <attr name="pressed_border_radius_top_left" />
+        <attr name="pressed_border_radius_top_right" />
+        <attr name="pressed_border_radius_bottom_left" />
+        <attr name="pressed_border_radius_bottom_right" />
+        <attr name="pressed_border_color" />
+        <attr name="pressed_gradient_direction" />
+        <attr name="pressed_gradient_startColor" />
+        <attr name="pressed_gradient_endColor" />
         <attr name="shadow_xoffset" />
         <attr name="shadow_yoffset" />
         <attr name="shadow_blur" />
