@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        findViewById<TextView>(R.id.pressed_drawable).setOnClickListener {
+            (it as TextView).setCompoundDrawablesWithIntrinsicBounds(R.drawable.test_selector2, 0, 0, 0)
+        }
         findViewById<TextView>(R.id.selected_text).isSelected = true
         findViewById<TextView>(R.id.pressed_text).setOnClickListener {
             it.isSelected = !it.isSelected

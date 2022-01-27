@@ -3,7 +3,6 @@ package com.android.widget
 import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
-import android.os.Build
 
 /**
  * Author: han.chen

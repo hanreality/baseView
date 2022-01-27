@@ -1,145 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="border_width" format="dimension" />
-    <attr name="border_radius" format="dimension" />
-    <attr name="border_radius_top_left" format="dimension" />
-    <attr name="border_radius_top_right" format="dimension" />
-    <attr name="border_radius_bottom_left" format="dimension" />
-    <attr name="border_radius_bottom_right" format="dimension" />
-    <attr name="border_color" format="color" />
-    <attr name="gradient_direction" format="enum">
-        <enum name="toRight" value="1" />
-        <enum name="toLeft" value="2" />
-        <enum name="toBottom" value="3" />
-        <enum name="toTop" value="4" />
-        <enum name="toBottomRight" value="5" />
-        <enum name="toTopLeft" value="6" />
-        <enum name="toBottomLeft" value="7" />
-        <enum name="toTopRight" value="8" />
-    </attr>
-    <attr name="gradient_startColor" format="color" />
-    <attr name="gradient_endColor" format="color" />
-    <attr name="disable_color" format="color" />
-    <attr name="disable_border_width" format="dimension" />
-    <attr name="disable_border_radius" format="dimension" />
-    <attr name="disable_border_radius_top_left" format="dimension" />
-    <attr name="disable_border_radius_top_right" format="dimension" />
-    <attr name="disable_border_radius_bottom_left" format="dimension" />
-    <attr name="disable_border_radius_bottom_right" format="dimension" />
-    <attr name="disable_border_color" format="color" />
-    <attr name="disable_gradient_direction" format="enum">
-        <enum name="toRight" value="1" />
-        <enum name="toLeft" value="2" />
-        <enum name="toBottom" value="3" />
-        <enum name="toTop" value="4" />
-        <enum name="toBottomRight" value="5" />
-        <enum name="toTopLeft" value="6" />
-        <enum name="toBottomLeft" value="7" />
-        <enum name="toTopRight" value="8" />
-    </attr>
-    <attr name="disable_gradient_startColor" format="color" />
-    <attr name="disable_gradient_endColor" format="color" />
-    <attr name="selected_color" format="color" />
-    <attr name="selected_border_width" format="dimension" />
-    <attr name="selected_border_radius" format="dimension" />
-    <attr name="selected_border_radius_top_left" format="dimension" />
-    <attr name="selected_border_radius_top_right" format="dimension" />
-    <attr name="selected_border_radius_bottom_left" format="dimension" />
-    <attr name="selected_border_radius_bottom_right" format="dimension" />
-    <attr name="selected_border_color" format="color" />
-    <attr name="selected_gradient_direction" format="enum">
-        <enum name="toRight" value="1" />
-        <enum name="toLeft" value="2" />
-        <enum name="toBottom" value="3" />
-        <enum name="toTop" value="4" />
-        <enum name="toBottomRight" value="5" />
-        <enum name="toTopLeft" value="6" />
-        <enum name="toBottomLeft" value="7" />
-        <enum name="toTopRight" value="8" />
-    </attr>
-    <attr name="selected_gradient_startColor" format="color" />
-    <attr name="selected_gradient_endColor" format="color" />
-    <attr name="pressed_color" format="color" />
-    <attr name="pressed_border_width" format="dimension" />
-    <attr name="pressed_border_radius" format="dimension" />
-    <attr name="pressed_border_radius_top_left" format="dimension" />
-    <attr name="pressed_border_radius_top_right" format="dimension" />
-    <attr name="pressed_border_radius_bottom_left" format="dimension" />
-    <attr name="pressed_border_radius_bottom_right" format="dimension" />
-    <attr name="pressed_border_color" format="color" />
-    <attr name="pressed_gradient_direction" format="enum">
-        <enum name="toRight" value="1" />
-        <enum name="toLeft" value="2" />
-        <enum name="toBottom" value="3" />
-        <enum name="toTop" value="4" />
-        <enum name="toBottomRight" value="5" />
-        <enum name="toTopLeft" value="6" />
-        <enum name="toBottomLeft" value="7" />
-        <enum name="toTopRight" value="8" />
-    </attr>
-    <attr name="pressed_gradient_startColor" format="color" />
-    <attr name="pressed_gradient_endColor" format="color" />
-    <attr name="shadow_xoffset" format="dimension" />
-    <attr name="shadow_yoffset" format="dimension" />
-    <attr name="shadow_blur" format="dimension" />
-    <attr name="shadow_spread" format="dimension" />
-    <attr name="shadow_color" format="color" />
-    <attr name="shadow_radius" format="dimension" />
+    <declare-styleable name="BackgroundAttr">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_radius" format="dimension" />
+        <attr name="border_radius_top_left" format="dimension" />
+        <attr name="border_radius_top_right" format="dimension" />
+        <attr name="border_radius_bottom_left" format="dimension" />
+        <attr name="border_radius_bottom_right" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="gradient_startColor" format="color" />
+        <attr name="gradient_endColor" format="color" />
+        <attr name="disable_color" format="color" />
+        <attr name="disable_border_width" format="dimension" />
+        <attr name="disable_border_radius" format="dimension" />
+        <attr name="disable_border_radius_top_left" format="dimension" />
+        <attr name="disable_border_radius_top_right" format="dimension" />
+        <attr name="disable_border_radius_bottom_left" format="dimension" />
+        <attr name="disable_border_radius_bottom_right" format="dimension" />
+        <attr name="disable_border_color" format="color" />
+        <attr name="disable_gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="disable_gradient_startColor" format="color" />
+        <attr name="disable_gradient_endColor" format="color" />
+        <attr name="selected_color" format="color" />
+        <attr name="selected_border_width" format="dimension" />
+        <attr name="selected_border_radius" format="dimension" />
+        <attr name="selected_border_radius_top_left" format="dimension" />
+        <attr name="selected_border_radius_top_right" format="dimension" />
+        <attr name="selected_border_radius_bottom_left" format="dimension" />
+        <attr name="selected_border_radius_bottom_right" format="dimension" />
+        <attr name="selected_border_color" format="color" />
+        <attr name="selected_gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="selected_gradient_startColor" format="color" />
+        <attr name="selected_gradient_endColor" format="color" />
+        <attr name="pressed_color" format="color" />
+        <attr name="pressed_border_width" format="dimension" />
+        <attr name="pressed_border_radius" format="dimension" />
+        <attr name="pressed_border_radius_top_left" format="dimension" />
+        <attr name="pressed_border_radius_top_right" format="dimension" />
+        <attr name="pressed_border_radius_bottom_left" format="dimension" />
+        <attr name="pressed_border_radius_bottom_right" format="dimension" />
+        <attr name="pressed_border_color" format="color" />
+        <attr name="pressed_gradient_direction" format="enum">
+            <enum name="toRight" value="1" />
+            <enum name="toLeft" value="2" />
+            <enum name="toBottom" value="3" />
+            <enum name="toTop" value="4" />
+            <enum name="toBottomRight" value="5" />
+            <enum name="toTopLeft" value="6" />
+            <enum name="toBottomLeft" value="7" />
+            <enum name="toTopRight" value="8" />
+        </attr>
+        <attr name="pressed_gradient_startColor" format="color" />
+        <attr name="pressed_gradient_endColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ShadowAttr">
+        <attr name="shadow_xoffset" format="dimension" />
+        <attr name="shadow_yoffset" format="dimension" />
+        <attr name="shadow_blur" format="dimension" />
+        <attr name="shadow_spread" format="dimension" />
+        <attr name="shadow_color" format="color" />
+        <attr name="shadow_radius" format="dimension" />
+    </declare-styleable>
 
     <declare-styleable name="AdvancedTextView">
         <attr name="android:layout_width"/>
         <attr name="android:layout_height"/>
-        <attr name="android:singleLine"/>
-        <attr name="border_width" />
-        <attr name="border_radius" />
-        <attr name="border_radius_top_left" />
-        <attr name="border_radius_top_right" />
-        <attr name="border_radius_bottom_left" />
-        <attr name="border_radius_bottom_right" />
-        <attr name="border_color" />
-        <attr name="gradient_direction" />
-        <attr name="gradient_startColor" />
-        <attr name="gradient_endColor" />
-        <attr name="disable_color" />
-        <attr name="disable_border_width" />
-        <attr name="disable_border_radius" />
-        <attr name="disable_border_radius_top_left" />
-        <attr name="disable_border_radius_top_right" />
-        <attr name="disable_border_radius_bottom_left" />
-        <attr name="disable_border_radius_bottom_right" />
-        <attr name="disable_border_color" />
-        <attr name="disable_gradient_direction" />
-        <attr name="disable_gradient_startColor" />
-        <attr name="disable_gradient_endColor" />
-        <attr name="selected_color" />
-        <attr name="selected_border_width" />
-        <attr name="selected_border_radius" />
-        <attr name="selected_border_radius_top_left" />
-        <attr name="selected_border_radius_top_right" />
-        <attr name="selected_border_radius_bottom_left" />
-        <attr name="selected_border_radius_bottom_right" />
-        <attr name="selected_border_color" />
-        <attr name="selected_gradient_direction" />
-        <attr name="selected_gradient_startColor" />
-        <attr name="selected_gradient_endColor" />
-        <attr name="pressed_color" />
-        <attr name="pressed_border_width" />
-        <attr name="pressed_border_radius" />
-        <attr name="pressed_border_radius_top_left" />
-        <attr name="pressed_border_radius_top_right" />
-        <attr name="pressed_border_radius_bottom_left" />
-        <attr name="pressed_border_radius_bottom_right" />
-        <attr name="pressed_border_color" />
-        <attr name="pressed_gradient_direction" />
-        <attr name="pressed_gradient_startColor" />
-        <attr name="pressed_gradient_endColor" />
-        <attr name="shadow_xoffset" />
-        <attr name="shadow_yoffset" />
-        <attr name="shadow_blur" />
-        <attr name="shadow_spread" />
-        <attr name="shadow_color" />
-        <attr name="shadow_radius" />
-
+        <attr name="pressed_drawableLeft" format="reference"/>
+        <attr name="selected_drawableLeft" format="reference"/>
+        <attr name="disable_drawableLeft" format="reference"/>
+        <attr name="pressed_drawableTop" format="reference"/>
+        <attr name="selected_drawableTop" format="reference"/>
+        <attr name="disable_drawableTop" format="reference"/>
+        <attr name="pressed_drawableRight" format="reference"/>
+        <attr name="selected_drawableRight" format="reference"/>
+        <attr name="disable_drawableRight" format="reference"/>
+        <attr name="pressed_drawableBottom" format="reference"/>
+        <attr name="selected_drawableBottom" format="reference"/>
+        <attr name="disable_drawableBottom" format="reference"/>
         <attr name="disable_text_color" format="color" />
         <attr name="selected_text_color" format="color" />
         <attr name="pressed_text_color" format="color" />
@@ -157,54 +123,5 @@
     <declare-styleable name="AdvancedViewGroup">
         <attr name="android:layout_width"/>
         <attr name="android:layout_height"/>
-        <attr name="border_width" />
-        <attr name="border_radius" />
-        <attr name="border_radius_top_left" />
-        <attr name="border_radius_top_right" />
-        <attr name="border_radius_bottom_left" />
-        <attr name="border_radius_bottom_right" />
-        <attr name="border_color" />
-        <attr name="gradient_direction" />
-        <attr name="gradient_startColor" />
-        <attr name="gradient_endColor" />
-        <attr name="disable_color" />
-        <attr name="disable_border_width" />
-        <attr name="disable_border_radius" />
-        <attr name="disable_border_radius_top_left" />
-        <attr name="disable_border_radius_top_right" />
-        <attr name="disable_border_radius_bottom_left" />
-        <attr name="disable_border_radius_bottom_right" />
-        <attr name="disable_border_color" />
-        <attr name="disable_gradient_direction" />
-        <attr name="disable_gradient_startColor" />
-        <attr name="disable_gradient_endColor" />
-        <attr name="selected_color" />
-        <attr name="selected_border_width" />
-        <attr name="selected_border_radius" />
-        <attr name="selected_border_radius_top_left" />
-        <attr name="selected_border_radius_top_right" />
-        <attr name="selected_border_radius_bottom_left" />
-        <attr name="selected_border_radius_bottom_right" />
-        <attr name="selected_border_color" />
-        <attr name="selected_gradient_direction" />
-        <attr name="selected_gradient_startColor" />
-        <attr name="selected_gradient_endColor" />
-        <attr name="pressed_color" />
-        <attr name="pressed_border_width" />
-        <attr name="pressed_border_radius" />
-        <attr name="pressed_border_radius_top_left" />
-        <attr name="pressed_border_radius_top_right" />
-        <attr name="pressed_border_radius_bottom_left" />
-        <attr name="pressed_border_radius_bottom_right" />
-        <attr name="pressed_border_color" />
-        <attr name="pressed_gradient_direction" />
-        <attr name="pressed_gradient_startColor" />
-        <attr name="pressed_gradient_endColor" />
-        <attr name="shadow_xoffset" />
-        <attr name="shadow_yoffset" />
-        <attr name="shadow_blur" />
-        <attr name="shadow_spread" />
-        <attr name="shadow_color" />
-        <attr name="shadow_radius" />
     </declare-styleable>
 </resources>

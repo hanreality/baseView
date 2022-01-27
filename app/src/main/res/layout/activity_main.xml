@@ -17,6 +17,17 @@
             android:divider="@drawable/list_divider"
             android:orientation="vertical"
             android:showDividers="middle">
+            <com.android.widget.AdvancedTextView
+                android:id="@+id/pressed_drawable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="触摸或点击"
+                android:textColor="#333333"
+                android:background="#ffffff"
+                android:clickable="true"
+                android:drawableLeft="@drawable/test_selector"
+                />
 
             <com.android.widget.AdvancedTextView
                 android:id="@+id/pressed_text"
@@ -208,19 +219,6 @@
                 app:gradient_direction="toBottomRight"
                 app:gradient_endColor="#9C27B0"
                 app:gradient_startColor="#ff0000" />
-
-            <com.android.widget.AdvancedTextView
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="文本居中 左右drawable也居中"
-                android:textColor="#333333"
-                android:drawableRight="@drawable/arrow"
-                android:drawableLeft="@drawable/arrow"
-                app:border_color="#ff0000"
-                app:border_radius="0dp"
-                app:border_width="1dp" />
-
 
             <com.android.widget.AdvancedLinearLayout
                 android:layout_width="wrap_content"
