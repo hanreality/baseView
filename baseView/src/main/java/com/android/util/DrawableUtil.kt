@@ -213,7 +213,7 @@ object DrawableUtil {
     }
 
     @JvmStatic
-    fun generateBackgroundDrawable(@NonNull widget: View, @NonNull backgroundAttr: TypedArray) : Drawable {
+    fun generateBackgroundDrawable(@NonNull widget: View, @NonNull backgroundAttr: TypedArray) : Drawable? {
         val backgroundDrawable = widget.background
         if (backgroundDrawable?.isStateful == true) {
             return backgroundDrawable
@@ -222,23 +222,29 @@ object DrawableUtil {
         val disabled: Drawable? = generateDisableDrawable(widget, backgroundAttr)
         val selected: Drawable? = generateSelectedDrawable(widget, backgroundAttr)
         val pressed: Drawable? = generatePressedDrawable(widget, backgroundAttr)
-        val drawable = StateListDrawable()
-        if (pressed != null) {
-            drawable.addState(
-                STATE_PRESSED, pressed
-            )
+        var stateDrawable: StateListDrawable? = null
+        if (disabled != null || selected != null || pressed != null) {
+            stateDrawable = StateListDrawable()
+            stateDrawable.addState(STATE_PRESSED, pressed)
+            stateDrawable.addState(STATE_SELECTED, selected)
+            stateDrawable.addState(STATE_DISABLED, disabled)
         }
-        if (selected != null) {
-            drawable.addState(
-                STATE_SELECTED, selected
-            )
+        var drawable: Drawable? = null
+        if (normal != null) {
+            drawable = if (stateDrawable != null) {
+                stateDrawable.addState(intArrayOf(), normal)
+                stateDrawable
+            } else {
+                normal
+            }
+        } else {
+            if (stateDrawable != null) {
+                val main = backgroundDrawable ?: ColorDrawable(Color.TRANSPARENT)
+                stateDrawable.addState(STATE_EMPTY, main)
+            } else {
+                drawable = backgroundDrawable
+            }
         }
-        if (disabled != null) {
-            drawable.addState(
-                STATE_DISABLED, disabled
-            )
-        }
-        drawable.addState(STATE_EMPTY, normal)
         return drawable
     }
 }

@@ -23,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="触摸或点击"
-                android:textColor="#333333"
-                android:background="#ffffff"
+                android:textColor="#ff9900"
+                android:background="@drawable/kk_welfare_button_doing"
                 android:clickable="true"
                 android:drawableLeft="@drawable/test_selector"
                 />
