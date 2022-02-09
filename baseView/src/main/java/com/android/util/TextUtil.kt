@@ -43,8 +43,10 @@ object TextUtil {
     @JvmStatic
     fun generateTextColors(@NonNull widget: TextView, @NonNull a: TypedArray): ColorStateList {
         val textColors = widget.textColors
-        if (textColors?.isStateful == true) {
-            return textColors
+        if (a.hasValue(R.styleable.AdvancedTextView_android_textColor)) {
+            if (textColors?.isStateful == true) {
+                return textColors
+            }
         }
         val states = arrayListOf<IntArray>()
         val colors = arrayListOf<Int>()
