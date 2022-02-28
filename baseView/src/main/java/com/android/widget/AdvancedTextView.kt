@@ -31,7 +31,7 @@ import kotlin.math.abs
  */
 
 @SuppressLint("AppCompatCustomView")
-class AdvancedTextView @JvmOverloads constructor(
+open class AdvancedTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

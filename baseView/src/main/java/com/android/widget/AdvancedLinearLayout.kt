@@ -27,7 +27,7 @@ import kotlin.math.abs
  * 4. shadow 已支持，xml直接用，且xoffset、yoffset、blur、spread、color缺一不可，宽高必须是exactly，api18以上
  */
 
-class AdvancedLinearLayout @JvmOverloads constructor(
+open class AdvancedLinearLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
