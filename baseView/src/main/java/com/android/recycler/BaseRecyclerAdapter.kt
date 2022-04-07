@@ -17,7 +17,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
     private val VIEW_TYPE_HEADER = Int.MIN_VALUE
     private val VIEW_TYPE_FOOTER = Int.MIN_VALUE + 1
     var headerView: View? = null
-    var footView: View? = null
+    var footerView: View? = null
     var recyclerView: RecyclerView? = null
 
     fun hasHeaderView(): Boolean {
@@ -25,7 +25,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
     }
 
     fun hasFooterView(): Boolean {
-        return footView != null
+        return footerView != null
     }
 
     fun isHeaderView(position: Int): Boolean {
@@ -33,7 +33,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
     }
 
     fun isFooterView(position: Int): Boolean {
-        return footView != null && position == itemCount - 1
+        return footerView != null && position == itemCount - 1
     }
 
     protected val itemList: ArrayList<T> = ArrayList()
@@ -76,7 +76,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
         if (headerView != null) {
             itemCount += 1
         }
-        if (footView != null) {
+        if (footerView != null) {
             itemCount += 1
         }
         return itemCount
@@ -99,8 +99,8 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
         } else if (position == itemCount - 1 && holder.itemViewType == VIEW_TYPE_FOOTER) {
             setFullSpanIfNeed(holder)
             (holder.itemView as? ViewGroup)?.removeAllViews()
-            (footView?.parent as? ViewGroup)?.removeAllViews()
-            footView?.let {
+            (footerView?.parent as? ViewGroup)?.removeAllViews()
+            footerView?.let {
                 (holder.itemView as? ViewGroup)?.addView(it)
             }
         } else {
@@ -113,7 +113,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
         if (position == 0 && headerView != null) {
             return VIEW_TYPE_HEADER
         }
-        if (position == itemCount - 1 && footView != null) {
+        if (position == itemCount - 1 && footerView != null) {
             return VIEW_TYPE_FOOTER
         }
         return getBasicItemType(position)
