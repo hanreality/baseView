@@ -60,11 +60,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
     abstract fun getBasicItemCount(): Int
 
     fun getItem(position: Int): T? {
-        return if (position > itemCount - 1){
-            null
-        } else {
-            itemList[position]
-        }
+        return itemList[position]
     }
 
     fun isEmpty(): Boolean {
@@ -116,7 +112,7 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
         if (position == itemCount - 1 && footerView != null) {
             return VIEW_TYPE_FOOTER
         }
-        return getBasicItemType(position)
+        return getBasicItemType(position - if (hasHeaderView()) 1 else 0)
     }
 
     @Synchronized
