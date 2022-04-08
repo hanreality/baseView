@@ -138,6 +138,16 @@ abstract class BaseRecyclerAdapter<T>(var context: Context) :
     }
 
     @Synchronized
+    fun addAll(index: Int, collection: Collection<T>): Boolean {
+        return if (itemList.addAll(index, collection)) {
+            notifyItemRangeInserted(index + if (hasHeaderView()) 1 else 0, collection.size)
+            true
+        } else {
+            false
+        }
+    }
+
+    @Synchronized
     fun addAll(collection: Collection<T>?): Boolean {
         collection?.let {
             val lastIndex = itemList.size
