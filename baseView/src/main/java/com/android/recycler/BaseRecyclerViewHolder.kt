@@ -18,5 +18,5 @@ abstract class BaseRecyclerViewHolder<T>(
     LayoutInflater.from(context).inflate(layoutId, parent, false)
 ) {
 
-    abstract fun bindData(item: T?)
+    abstract fun bindData(item: T?, position: Int)
 }
