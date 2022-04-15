@@ -83,8 +83,13 @@ abstract class BaseRecyclerAdapter<T>(var context: Context?) :
 
     @Synchronized
     open fun remove(position: Int) {
-        itemList.removeAt(position)
-        notifyItemRemoved(position)
+        try {
+            itemList.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, itemCount - position)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     @Synchronized
