@@ -62,7 +62,6 @@ class LiveColumnView @JvmOverloads constructor(
         }
         paint.color = color
         paint.style = Paint.Style.FILL
-        setBackgroundColor(Color.BLACK)
         valueAnimators = Array(columnNum) { index ->
             val valueAnimator = ValueAnimator.ofFloat(1f, 1f / columnNum, 1f)
             valueAnimator.duration = 800
