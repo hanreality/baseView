@@ -1,11 +1,9 @@
 package com.android.widget
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -30,11 +28,15 @@ class LiveColumnView @JvmOverloads constructor(
     private var columnWidth: Int = 0
     private var columnHeight: Int = 0
     private var valueAnimators: Array<ValueAnimator>
-
+    private var linearGradient: LinearGradient? = null
     var isStart = false
+    @ColorInt
+    private var color: Int = Color.WHITE
+    @ColorInt
+    private var beginColor: Int = Color.WHITE
 
     @ColorInt
-    private var color: Int = Color.RED
+    private var endColor: Int = Color.WHITE
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.LiveColumnView)
@@ -48,9 +50,12 @@ class LiveColumnView @JvmOverloads constructor(
                     R.styleable.LiveColumnView_android_layout_height,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-        } catch (e: Exception) {}
+        } catch (e: Exception) {
+        }
         columnNum = a.getInt(R.styleable.LiveColumnView_column_count, 3)
         color = a.getColor(R.styleable.LiveColumnView_column_color, Color.WHITE)
+        beginColor = a.getColor(R.styleable.LiveColumnView_column_begin_color, color)
+        endColor = a.getColor(R.styleable.LiveColumnView_column_end_color, color)
         columnWidth = a.getDimensionPixelSize(R.styleable.LiveColumnView_column_width, dp2px(2f))
         columnHeight = a.getDimensionPixelSize(R.styleable.LiveColumnView_column_height, dp2px(12f))
         a.recycle()
@@ -60,8 +65,6 @@ class LiveColumnView @JvmOverloads constructor(
         columnHeightScale = Array(columnNum) {
             1f
         }
-        paint.color = color
-        paint.style = Paint.Style.FILL
         valueAnimators = Array(columnNum) { index ->
             val valueAnimator = ValueAnimator.ofFloat(1f, 1f / columnNum, 1f)
             valueAnimator.duration = 800
@@ -109,6 +112,19 @@ class LiveColumnView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        paint.style = Paint.Style.FILL
+        if (linearGradient == null) {
+            linearGradient = LinearGradient(
+                0f,
+                0f,
+                0f,
+                measuredHeight.toFloat(),
+                beginColor,
+                endColor,
+                Shader.TileMode.CLAMP
+            )
+        }
+        paint.shader = linearGradient
         val drawLeft = (right - left) / 2 - drawWidth / 2
         val drawTop = (bottom - top) / 2 - drawHeight / 2
         rectFs.forEachIndexed { index, rectF ->
@@ -120,7 +136,7 @@ class LiveColumnView @JvmOverloads constructor(
             )
             canvas?.drawRoundRect(rectF, columnWidth.toFloat(), columnWidth.toFloat(), paint)
             rectF.set(
-                drawLeft+ columnWidth * (2f * index + 1f),
+                drawLeft + columnWidth * (2f * index + 1f),
                 drawTop + columnHeight * (1 - 1f / columnNum) + columnWidth.toFloat(),
                 drawLeft + columnWidth * 2f * (index + 1),
                 drawTop + columnHeight.toFloat()

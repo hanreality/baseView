@@ -321,5 +321,7 @@
         <attr name="column_color" format="color"/>
         <attr name="column_width" format="dimension"/>
         <attr name="column_height" format="dimension"/>
+        <attr name="column_begin_color" format="color"/>
+        <attr name="column_end_color" format="color"/>
     </declare-styleable>
 </resources>
