@@ -6,10 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.bereality.baseview.MyChronometer
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:background="@color/black"
+        android:orientation="horizontal">
+
+        <com.android.widget.LiveColumnView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:column_count="3"
+            app:column_width="4dp"
+            app:column_height="24dp"/>
+
+        <com.android.widget.LiveColumnView
+            android:layout_marginLeft="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:column_count="3" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,28 +38,28 @@
             android:divider="@drawable/list_divider"
             android:orientation="vertical"
             android:showDividers="middle">
+
             <com.android.widget.AdvancedTextView
                 android:id="@+id/pressed_drawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="触摸或点击"
-                android:textColor="#ff9900"
                 android:background="@drawable/kk_welfare_button_doing"
                 android:clickable="true"
                 android:drawableLeft="@drawable/test_selector"
-                />
+                android:gravity="center_horizontal"
+                android:text="触摸或点击"
+                android:textColor="#ff9900" />
 
             <com.android.widget.AdvancedTextView
                 android:id="@+id/pressed_text"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:background="#ffffff"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="触摸或点击变色"
                 android:textColor="@color/eh_room_seat_status_text_color_selector"
-                android:background="#ffffff"
                 app:border_color="#ededed"
                 app:border_radius="20dp"
                 app:border_width="1dp"
@@ -52,7 +68,7 @@
                 app:pressed_border_width="1dp"
                 app:pressed_color="#324511"
                 app:pressed_text_color="#0000ff"
-                app:selected_text_color="#ff1A1A"/>
+                app:selected_text_color="#ff1A1A" />
 
             <com.android.widget.AdvancedTextView
                 android:id="@+id/selected_text"
@@ -229,11 +245,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
                 android:padding="20dp"
                 app:border_color="#00ff00"
                 app:border_radius="5dp"
-                app:border_width="1dp"
-                android:orientation="vertical">
+                app:border_width="1dp">
 
                 <com.android.widget.AdvancedTextView
                     android:layout_width="wrap_content"
@@ -249,27 +265,27 @@
                 <com.android.widget.AdvancedTextView
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:padding="4dp"
                     android:text="text"
-                    android:layout_marginTop="5dp"
                     android:textColor="#333333"
                     app:border_color="#ff0000"
                     app:border_radius="10dp"
                     app:border_width="1dp"
-                    app:shadow_xoffset="2dp"
-                    app:shadow_yoffset="6dp"
                     app:shadow_blur="5dp"
-                    app:shadow_spread="1dp"
+                    app:shadow_color="#ff0000"
                     app:shadow_radius="11dp"
-                    app:shadow_color="#ff0000"/>
+                    app:shadow_spread="1dp"
+                    app:shadow_xoffset="2dp"
+                    app:shadow_yoffset="6dp" />
 
                 <com.android.widget.AdvancedTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:gravity="center"
                     android:padding="4dp"
-                    android:layout_marginTop="12dp"
                     android:text="text"
                     android:textColor="#333333"
                     app:border_color="#ff0000"

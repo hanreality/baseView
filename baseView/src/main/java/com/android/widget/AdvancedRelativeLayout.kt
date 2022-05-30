@@ -42,12 +42,12 @@ open class AdvancedRelativeLayout @JvmOverloads constructor(
         var layoutHeight = 0
         var layoutWidth = 0
         try {
-            layoutWidth = a.getDimensionPixelSize(
+            layoutWidth = a.getLayoutDimension(
                 R.styleable.AdvancedTextView_android_layout_width,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             layoutHeight =
-                a.getDimensionPixelSize(
+                a.getLayoutDimension(
                     R.styleable.AdvancedTextView_android_layout_height,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )

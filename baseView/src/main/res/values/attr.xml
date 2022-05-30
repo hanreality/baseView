@@ -313,4 +313,13 @@
         <attr name="pressed_gradient_endColor" />
         <!--backgroundStyle-->
     </declare-styleable>
+
+    <declare-styleable name="LiveColumnView">
+        <attr name="android:layout_width" />
+        <attr name="android:layout_height" />
+        <attr name="column_count" format="integer"/>
+        <attr name="column_color" format="color"/>
+        <attr name="column_width" format="dimension"/>
+        <attr name="column_height" format="dimension"/>
+    </declare-styleable>
 </resources>

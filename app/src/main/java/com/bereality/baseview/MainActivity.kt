@@ -4,19 +4,13 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.android.widget.LiveColumnView
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val chronometer = findViewById<MyChronometer>(R.id.test)
-        chronometer.setOnChronometerTickListener {
-            println("onChronometerTick")
-        }
-        chronometer.format = "%s"
-        chronometer.base = SystemClock.elapsedRealtime()
-        chronometer.start()
         findViewById<TextView>(R.id.pressed_drawable).setOnClickListener {
             (it as TextView).setCompoundDrawablesWithIntrinsicBounds(
                 R.drawable.test_selector2,

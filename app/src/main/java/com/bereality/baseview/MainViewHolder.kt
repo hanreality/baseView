@@ -12,7 +12,8 @@ import com.android.recycler.BaseRecyclerViewHolder
 class MainViewHolder(context: Context, parent: ViewGroup) :
     BaseRecyclerViewHolder<String>(context, parent, R.layout.layout_item) {
     private val text = itemView.findViewById<TextView>(R.id.item_view)
-    override fun bindData(item: String?) {
+
+    override fun bindData(item: String?, position: Int) {
         text.text = item
     }
 }
