@@ -148,6 +148,7 @@
                 app:border_radius="5dp"
                 app:gradient_direction="toRight"
                 app:gradient_endColor="#9C27B0"
+                app:gradient_centerColor="@color/white"
                 app:gradient_startColor="#ff0000" />
 
             <com.android.widget.AdvancedTextView
@@ -158,10 +159,12 @@
                 android:paddingRight="10dp"
                 android:text="圆角背景渐变填充--toLeft"
                 android:textColor="#ffffff"
+                android:enabled="false"
                 app:border_radius="5dp"
-                app:gradient_direction="toLeft"
-                app:gradient_endColor="#9C27B0"
-                app:gradient_startColor="#ff0000" />
+                app:disable_gradient_direction="toLeft"
+                app:disable_gradient_endColor="#9C27B0"
+                app:disable_gradient_centerColor="@color/white"
+                app:disable_gradient_startColor="#ff0000" />
 
             <com.android.widget.AdvancedTextView
                 android:layout_width="wrap_content"

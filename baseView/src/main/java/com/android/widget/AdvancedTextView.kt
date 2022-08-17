@@ -37,6 +37,7 @@ open class AdvancedTextView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : TextView(context, attrs, defStyleAttr) {
     private var mShadowEnable = false
+
     init {
         initStyle(context, attrs)
     }
@@ -143,7 +144,7 @@ open class AdvancedTextView @JvmOverloads constructor(
         when {
             params.orientation != null -> {
                 drawable.orientation = params.orientation
-                drawable.colors = intArrayOf(params.mGradientStartColor, params.mGradientEndColor)
+                drawable.colors = params.mGradientColors.toIntArray()
             }
             widget.background is ColorDrawable -> {
                 drawable.setColor((widget.background as ColorDrawable).color)
@@ -211,7 +212,10 @@ open class AdvancedTextView @JvmOverloads constructor(
         }
     }
 
-    private fun generateBackgroundDrawable(@NonNull widget: View, @NonNull backgroundAttr: TypedArray) : Drawable? {
+    private fun generateBackgroundDrawable(
+        @NonNull widget: View,
+        @NonNull backgroundAttr: TypedArray
+    ): Drawable? {
         val backgroundDrawable = widget.background
         if (backgroundDrawable?.isStateful == true) {
             return backgroundDrawable
@@ -300,8 +304,10 @@ open class AdvancedTextView @JvmOverloads constructor(
         return drawable
     }
 
-    private fun generateCompoundDrawables(@NonNull widget: TextView,
-                                          @NonNull a: TypedArray) : Array<Drawable?> {
+    private fun generateCompoundDrawables(
+        @NonNull widget: TextView,
+        @NonNull a: TypedArray
+    ): Array<Drawable?> {
         return arrayOf(
             generateCompoundDrawable(widget, a, 0),
             generateCompoundDrawable(widget, a, 1),
@@ -310,7 +316,12 @@ open class AdvancedTextView @JvmOverloads constructor(
         )
     }
 
-    fun addShadowToView(@NonNull widget: View, @NonNull a: TypedArray, viewWidth: Int, viewHeight: Int): Boolean {
+    fun addShadowToView(
+        @NonNull widget: View,
+        @NonNull a: TypedArray,
+        viewWidth: Int,
+        viewHeight: Int
+    ): Boolean {
         val params = AdvancedParams.newShadowParams(a)
         if (!params.mShadowEnable) {
             return false
@@ -385,7 +396,9 @@ open class AdvancedTextView @JvmOverloads constructor(
         var mBorderColor = 0
         var mGradientDirection = 0
         var mGradientStartColor = 0
+        var mGradientCenterColor = 0
         var mGradientEndColor = 0
+        var mGradientColors: MutableList<Int> = mutableListOf()
         var mDisableColor = 0
         var mSelectedColor = 0
         var mPressedColor = 0
@@ -421,8 +434,18 @@ open class AdvancedTextView @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedTextView_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedTextView_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedTextView_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedTextView_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedTextView_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 setRadii(params, a)
                 return params
             }
@@ -439,8 +462,18 @@ open class AdvancedTextView @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedTextView_disable_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedTextView_disable_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedTextView_disable_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedTextView_disable_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedTextView_disable_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 params.mDisableColor = a.getColor(R.styleable.AdvancedTextView_disable_color, 1)
                 params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
                     R.styleable.AdvancedTextView_disable_border_radius_top_left,
@@ -473,8 +506,18 @@ open class AdvancedTextView @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedTextView_selected_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedTextView_selected_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedTextView_selected_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedTextView_selected_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedTextView_selected_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 params.mSelectedColor = a.getColor(R.styleable.AdvancedTextView_selected_color, 1)
                 params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
                     R.styleable.AdvancedTextView_selected_border_radius_top_left,
@@ -507,8 +550,18 @@ open class AdvancedTextView @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedTextView_pressed_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedTextView_pressed_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedTextView_pressed_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedTextView_pressed_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedTextView_pressed_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 params.mPressedColor = a.getColor(R.styleable.AdvancedTextView_pressed_color, 1)
                 params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
                     R.styleable.AdvancedTextView_pressed_border_radius_top_left,

@@ -303,7 +303,9 @@ open class AdvancedFrameLayout @JvmOverloads constructor(
         var mBorderColor = 0
         var mGradientDirection = 0
         var mGradientStartColor = 0
+        var mGradientCenterColor = 0
         var mGradientEndColor = 0
+        var mGradientColors: MutableList<Int> = mutableListOf()
         var mDisableColor = 0
         var mSelectedColor = 0
         var mPressedColor = 0
@@ -339,8 +341,18 @@ open class AdvancedFrameLayout @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedFrameLayout_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedFrameLayout_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedFrameLayout_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 setRadii(params, a)
                 return params
             }
@@ -357,8 +369,18 @@ open class AdvancedFrameLayout @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedFrameLayout_disable_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_disable_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedFrameLayout_disable_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedFrameLayout_disable_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_disable_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 params.mDisableColor = a.getColor(R.styleable.AdvancedFrameLayout_disable_color, 1)
                 params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
                     R.styleable.AdvancedFrameLayout_disable_border_radius_top_left,
@@ -391,8 +413,18 @@ open class AdvancedFrameLayout @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedFrameLayout_selected_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_selected_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedFrameLayout_selected_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedFrameLayout_selected_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_selected_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 params.mSelectedColor = a.getColor(R.styleable.AdvancedFrameLayout_selected_color, 1)
                 params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
                     R.styleable.AdvancedFrameLayout_selected_border_radius_top_left,
@@ -425,8 +457,18 @@ open class AdvancedFrameLayout @JvmOverloads constructor(
                     a.getInt(R.styleable.AdvancedFrameLayout_pressed_gradient_direction, 0)
                 params.mGradientStartColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_pressed_gradient_startColor, -0x1)
+                params.mGradientColors.add(params.mGradientStartColor)
+                if (a.hasValue(R.styleable.AdvancedFrameLayout_pressed_gradient_centerColor)) {
+                    params.mGradientCenterColor =
+                        a.getColor(
+                            R.styleable.AdvancedFrameLayout_pressed_gradient_centerColor,
+                            -0x1
+                        )
+                    params.mGradientColors.add(params.mGradientCenterColor)
+                }
                 params.mGradientEndColor =
                     a.getColor(R.styleable.AdvancedFrameLayout_pressed_gradient_endColor, -0x1)
+                params.mGradientColors.add(params.mGradientEndColor)
                 params.mPressedColor = a.getColor(R.styleable.AdvancedFrameLayout_pressed_color, 1)
                 params.mBorderRadiusTopLeft = a.getDimensionPixelSize(
                     R.styleable.AdvancedFrameLayout_pressed_border_radius_top_left,
