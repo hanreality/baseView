@@ -34,9 +34,9 @@ class LiveColumnView @JvmOverloads constructor(
     private var color: Int = Color.WHITE
     @ColorInt
     private var beginColor: Int = Color.WHITE
-
     @ColorInt
     private var endColor: Int = Color.WHITE
+    private var colorChanged :Boolean = false
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.LiveColumnView)
@@ -78,6 +78,21 @@ class LiveColumnView @JvmOverloads constructor(
 
     }
 
+    fun setColor(@ColorInt color: Int) {
+        this.color = color
+        this.beginColor = color
+        this.endColor = color
+        colorChanged = true
+        invalidate()
+    }
+
+    fun setGradientColors(@ColorInt beginColor: Int, @ColorInt endColor: Int) {
+        this.beginColor = beginColor
+        this.endColor = endColor
+        colorChanged = true
+        invalidate()
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val viewWidth = when (layoutWidth) {
@@ -113,7 +128,7 @@ class LiveColumnView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         paint.style = Paint.Style.FILL
-        if (linearGradient == null) {
+        if (linearGradient == null || colorChanged) {
             linearGradient = LinearGradient(
                 0f,
                 0f,
@@ -123,6 +138,7 @@ class LiveColumnView @JvmOverloads constructor(
                 endColor,
                 Shader.TileMode.CLAMP
             )
+            colorChanged = false
         }
         paint.shader = linearGradient
         val drawLeft = (right - left) / 2 - drawWidth / 2
