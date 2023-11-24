@@ -69,7 +69,7 @@ open class AdvancedTextView @JvmOverloads constructor(
         a.recycle()
         shadowAttr.recycle()
 
-        setCompoundDrawablesWithIntrinsicBounds(
+        setCompoundDrawablesRelativeWithIntrinsicBounds(
             compoundDrawables[0],
             compoundDrawables[1],
             compoundDrawables[2],
@@ -255,7 +255,7 @@ open class AdvancedTextView @JvmOverloads constructor(
         @NonNull a: TypedArray,
         @IntRange(from = 0, to = 3) direction: Int
     ): Drawable? {
-        val compoundDrawable = widget.compoundDrawables[direction]
+        val compoundDrawable = widget.compoundDrawablesRelative[direction]
         if (compoundDrawable?.isStateful == true) {
             return compoundDrawable
         }

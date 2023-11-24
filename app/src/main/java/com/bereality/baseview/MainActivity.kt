@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById<TextView>(R.id.pressed_drawable).setOnClickListener {
-            (it as TextView).setCompoundDrawablesWithIntrinsicBounds(
+            (it as TextView).setCompoundDrawablesRelativeWithIntrinsicBounds(
                 R.drawable.test_selector2,
                 0,
                 0,
