@@ -7,14 +7,6 @@ static def addRepository(RepositoryHandler handler) {
     handler.maven { url 'https://maven.aliyun.com/repository/google' }
     handler.maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
     handler.maven { url "https://jitpack.io" }
-    handler.maven {
-        url 'http://10.4.255.180:8081/nexus/content/repositories/android-releases/'
-        allowInsecureProtocol = true
-    }
-    handler.maven {
-        url 'http://10.4.255.180:8081/nexus/content/repositories/android-snapshots/'
-        allowInsecureProtocol = true
-    }
 
 }
 // 添加到全局的变量中
