@@ -344,4 +344,16 @@
         <attr name="column_begin_color" format="color"/>
         <attr name="column_end_color" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="AudioWaveView">
+        <attr name="android:layout_width" />
+        <attr name="android:layout_height" />
+        <attr name="circle_count" format="integer"/>
+        <attr name="circle_color" format="color"/>
+        <attr name="circle_radius" format="dimension"/>
+        <attr name="circle_exp_width" format="dimension"/>
+        <attr name="circle_line_width" format="dimension"/>
+        <attr name="circle_begin_color" format="color"/>
+        <attr name="circle_end_color" format="color"/>
+    </declare-styleable>
 </resources>

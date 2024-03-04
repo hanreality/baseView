@@ -26,6 +26,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:column_count="3" />
+
+        <com.android.widget.AudioWaveView
+            android:id="@+id/audio_wave_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:circle_color="@color/white"
+            app:circle_line_width="0.5dp"/>
     </LinearLayout>
 
     <ScrollView
